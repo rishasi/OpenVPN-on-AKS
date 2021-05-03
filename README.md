@@ -479,17 +479,22 @@ This concludes the labs. These are very simple examples and there is much more y
 
 2. Although not the best use case for OpenVPN, the Admin Portal provides access logs through the VPN Server. You can monitor which client accessed which resource and can perform some basic filtering on it.
 
-3. Customer wanted to have the client and the server as part of the same AKS Cluster. This would mean they wanted to over-ride the default Pod-to-Pod connectivity and rather have traffic flow through the VPN Server. This is not possible in Kubernetes, as the VPN Server in this case would require *Layer 2 Ethernet Bridging Mode* which is not supported. Moreover, if a customer modifies the default routing behavior for AKS Networking, it will not be supported. AKS being a managed offering, should not be modified manually/using 3rd party tools.
+3. Customer wanted to have the client and the server as part of the same AKS Cluster. This would mean they wanted to over-ride the default Pod-to-Pod connectivity and rather have traffic flow through the VPN Server. This is not possible in Kubernetes, as the VPN Server in this case would require *Layer 2 Ethernet Bridging Mode* which is not supported (I think). Moreover, if a customer modifies the default routing behavior for AKS Networking, it will not be supported. AKS being a managed offering, it's routing should not be modified manually/using 3rd party tools.
+
+   Details: https://openvpn.net/vpn-server-resources/configuring-openvpn-access-server-for-a-privately-bridged-network/#prerequisites
 
 For #2 and #3 above, I suggested client to use:
 
 - Prometheus/Azure Monitors/etc to monitor Pod-to-Pod traffic
+
 - Use SideCar Proxy like Istio/Linkerd for having secure Pod-to-Pod connectivity using mTLS.
+
+  https://linkerd.io/2.10/features/automatic-mtls/
 
 For #2 and #3 above, OpenVPN is not the best solution.
 
 ---
 
-You can have some other OpenVPN Server, or build your own Docker Image.
+### Footnotes:
 
-Another solution is here, have not tried: https://bugraoz93.medium.com/openvpn-client-in-a-pod-kubernetes-d3345c66b014
+You can install another OpenVPN Server implementation instead of using the one used here. Or, you can build your own Docker Image. One of the solution is here, have not tried: https://bugraoz93.medium.com/openvpn-client-in-a-pod-kubernetes-d3345c66b014
