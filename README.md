@@ -299,6 +299,8 @@ More details on Routing and NAT: https://openvpn.net/vpn-server-resources/reach-
 - A Pod with OpenVPN Client
 - Configuration Profile for the Client to use
 
+#### Steps
+
 ##### Creating a Pod:
 
 Let us create a Pod in a new Cluster:
