@@ -471,7 +471,7 @@ This concludes the labs. These are very simple examples and there is much more y
 
 ---
 
-#### Use Case for my client:
+### Use Case for my client:
 
 1. Since the end users were located at different sites geographically, providing dynamic private access to each client was a challenge. Every time a new client location wanted to access the AKS Cluster resources, a new point-to-site VPN had to be established.
 
